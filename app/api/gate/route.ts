@@ -25,7 +25,8 @@ function extractObject(chunk: string): Record<string, unknown> | null {
 }
 
 function parseStep(chunk: string, stepIndex: number): unknown {
-  if (stepIndex < 5) return extractArray(chunk) ?? { raw: chunk.trim().slice(0, 300) }
+  // Steps 1-4 (indices 0-3) → arrays; Steps 5-7 (indices 4-6) → objects
+  if (stepIndex < 4) return extractArray(chunk) ?? { raw: chunk.trim().slice(0, 300) }
   return extractObject(chunk) ?? { raw: chunk.trim().slice(0, 300) }
 }
 

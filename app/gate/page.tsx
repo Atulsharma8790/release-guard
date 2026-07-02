@@ -89,7 +89,10 @@ export default function GatePage() {
 
             if (data.type === 'step_start') {
               setActiveStep(data.step)
-              setPinnedTab(null)
+              // Only auto-advance if user hasn't manually pinned a tab
+              // pinnedTab === null means "follow active" — keep following
+              // If user has pinned a completed step, leave them there
+              setPinnedTab(prev => prev === null ? null : prev)
             }
 
             if (data.type === 'token') {
