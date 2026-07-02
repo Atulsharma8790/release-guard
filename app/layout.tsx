@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-[#0a0a0f] text-slate-200">
-        <Suspense fallback={null}><PortfolioBar /></Suspense>{children}</body>
+        <Suspense fallback={null}><PortfolioBar /></Suspense>{children}<Suspense fallback={null}><PortfolioBar /></Suspense></body>
     </html>
   )
 }
